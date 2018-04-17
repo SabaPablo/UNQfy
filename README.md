@@ -33,7 +33,7 @@ Parameter                | Definition
 * node main.js --showPlayList "PlaylistName"
 
 ### Demo: ###
-For your happiness the script launcher.sh execut all commands available. 
+For your happiness the script launcher.sh execute all commands available. 
  * Run:
 ``` 
     cd src
