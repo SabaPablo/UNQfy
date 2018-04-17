@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>365</y>
+      <w>160</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>Album
+--
+- name = String
+- year = Date
+- artist: Artist
+- tracks: List&lt;Tarck&gt;
+--
++ addTrack(trackName: Tracki): void
++ matchArtist(artistName: String): bool
++ isYourName(albumName: String): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>220</y>
+      <w>145</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>Playlists
+--
+- name: String
+- genresToInclude: List&lt;String&gt;
+- maxDuration: Int
+- tracks: List&lt;Tracki&gt;
+- unqfy: UNQFy
+--
++ duration(void): Int
++ autoGenerate(strategy: Void): void
++ hasTrack(aTrack): bool
++ isYourName(playlistName): bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>365</y>
+      <w>180</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>Track
+--
+- name: String
+- duration: Int
+- genre: String
+- album: Album
+--
++ matchArtist(artistName: String): bool
++ containSomeGenre(genres: List&lt;String&gt;): bool
++ isYourName(trackName: String): bool
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>85</x>
+      <y>220</y>
+      <w>140</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>Artist
+--
+- name: String
+- country: String
+--
+issYourName(aristName: String): bool
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>225</x>
+      <y>405</y>
+      <w>395</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;770.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>150</x>
+      <y>310</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>695</x>
+      <y>310</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>225</x>
+      <y>415</y>
+      <w>395</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>770.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>265</x>
+      <y>75</y>
+      <w>310</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>UNQFy
+--
+- albums: List&lt;Album&gt;
+- artists: List&lt;Artist&gt;
+- tracks: List&lt;Track&gt; 
+- playlists: List&lt;Playlist&gt; 
+--
++ addArtist(params: JSON): void
++ addAlbum(artistName: String, params: JSON): void
++ addPlaylist(name: String, genresToInclude: List&lt;String&gt;, maxDuration: Int): void
++ addTrack(albumName: String, params: JSON): void
++ getTracksMatchingGenres(genres: List&lt;String&gt;): List&lt;Track&gt;
++ getTracksMatchingArtist(artistName: String): List&lt;Track&gt; 
++ getArtistByName(name: String): Artist
++ getAlbumByName(name: String): Album
++ getTrackByName(name: String): Track
++ getPlaylistByName(name: String): Playlist
++ getArtistLikeName(pseudoName: String): Artist
++ getAlbumLikeName(pseudoName: String): Album
++ getTrackLikeName(pseudoName: String): Track
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>225</x>
+      <y>230</y>
+      <w>85</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;150.0;310.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>535</x>
+      <y>230</y>
+      <w>85</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0;150.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>95</y>
+      <w>145</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0;270.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>150</x>
+      <y>95</y>
+      <w>125</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+</diagram>
