@@ -5,7 +5,7 @@
 
 ### Parameters available: ###
 
-Parameter                | Defition
+Parameter                | Definition
 ------------------------ | -------------------------------------------
 --addArtist              | Create and add new artist                  
 --addAlbum               | Create and add new album                   
