@@ -5,7 +5,7 @@
 
 ### Parameters available: ###
 
-Parameter                | Defition
+Parameter                | Definition
 ------------------------ | -------------------------------------------
 --addArtist              | Create and add new artist                  
 --addAlbum               | Create and add new album                   
@@ -33,7 +33,7 @@ Parameter                | Defition
 * node main.js --showPlayList "PlaylistName"
 
 ### Demo: ###
-For your happiness the script launcher.sh executa all commands available. 
+For your happiness the script launcher.sh execute all commands available. 
  * Run:
 ``` 
     cd src
