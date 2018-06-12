@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>49</x>
-      <y>455</y>
+      <y>476</y>
       <w>224</w>
       <h>133</h>
     </coordinates>
@@ -25,7 +25,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>833</x>
-      <y>252</y>
+      <y>273</y>
       <w>203</w>
       <h>133</h>
     </coordinates>
@@ -48,7 +48,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>805</x>
-      <y>455</y>
+      <y>476</y>
       <w>252</w>
       <h>133</h>
     </coordinates>
@@ -69,7 +69,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>70</x>
-      <y>252</y>
+      <y>273</y>
       <w>196</w>
       <h>133</h>
     </coordinates>
@@ -87,7 +87,7 @@ issYourName(aristName: String): bool
     <id>Relation</id>
     <coordinates>
       <x>266</x>
-      <y>511</y>
+      <y>532</y>
       <w>553</w>
       <h>21</h>
     </coordinates>
@@ -98,7 +98,7 @@ issYourName(aristName: String): bool
     <id>Relation</id>
     <coordinates>
       <x>161</x>
-      <y>378</y>
+      <y>399</y>
       <w>21</w>
       <h>91</h>
     </coordinates>
@@ -109,7 +109,7 @@ issYourName(aristName: String): bool
     <id>Relation</id>
     <coordinates>
       <x>924</x>
-      <y>378</y>
+      <y>399</y>
       <w>21</w>
       <h>91</h>
     </coordinates>
@@ -120,7 +120,7 @@ issYourName(aristName: String): bool
     <id>Relation</id>
     <coordinates>
       <x>266</x>
-      <y>525</y>
+      <y>546</y>
       <w>553</w>
       <h>21</h>
     </coordinates>
@@ -131,7 +131,7 @@ issYourName(aristName: String): bool
     <id>UMLClass</id>
     <coordinates>
       <x>322</x>
-      <y>49</y>
+      <y>70</y>
       <w>434</w>
       <h>224</h>
     </coordinates>
@@ -164,22 +164,22 @@ issYourName(aristName: String): bool
     <id>Relation</id>
     <coordinates>
       <x>749</x>
-      <y>77</y>
+      <y>119</y>
       <w>203</w>
-      <h>189</h>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;270.0;10.0;270.0;250.0</additional_attributes>
+    <additional_attributes>10.0;10.0;270.0;10.0;270.0;220.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>161</x>
-      <y>77</y>
+      <y>119</y>
       <w>175</w>
-      <h>189</h>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>230.0;10.0;10.0;10.0;10.0;250.0</additional_attributes>
+    <additional_attributes>230.0;10.0;10.0;10.0;10.0;220.0</additional_attributes>
   </element>
 </diagram>
