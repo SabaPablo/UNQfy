@@ -6,8 +6,6 @@ const consoleParser = require('./unqfy/consoleParser');
 const modMinim = require('minimist');
 const stdio = require('stdio');
 
-
-// Retorna una instancia de UNQfy. Si existe filename, recupera la instancia desde el archivo.
 function getUNQfy(filename) {
   let unqfy = new unqmod.UNQfy();
   if (fs.existsSync(filename)) {
@@ -16,7 +14,7 @@ function getUNQfy(filename) {
   return unqfy;
 }
 
-// Guarda el estado de UNQfy en filename
+
 function saveUNQfy(unqfy, filename) {
   unqfy.save(filename);
 }
@@ -33,9 +31,10 @@ function main() {
     showTrackWithName  : {args: 1, description: 'Show several data'},
     showTrackWithArtist: {args: 1, description: 'Show several data'},
     showTrackWithGenre : {args: 1, description: 'Show several data'},
-    createPlaylist: {args: 3, description: 'Create a new playlist'     },
-    showPlayList  : {args: 1, description: 'Show playlist data' },
-    h   : {args: 0,description: 'AYUDA'                            }
+    createPlaylist: {args: 3, description: 'Create a new playlist' },
+    showPlayList  : {args: 1, description: 'Show playlist data'    },
+    populateAlbumsForArtist  : {args: 1, description: 'Populate album for artist'},
+    h   : {args: 0,description: 'Help'                            }
     
   });
   

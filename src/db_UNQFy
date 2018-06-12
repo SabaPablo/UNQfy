@@ -1,0 +1,76 @@
+{
+  "rootObjects": [
+    {
+      "id": "__00001__",
+      "name": null
+    }
+  ],
+  "objects": {
+    "__00001__": {
+      "artists": "__00002__",
+      "tracks": "__00003__",
+      "playlists": "__00004__"
+    },
+    "__00002__": {
+      "0": "__00005__"
+    },
+    "__00003__": {},
+    "__00004__": {
+      "0": "__00006__"
+    },
+    "__00005__": {
+      "name": "Bon Jovi",
+      "country": "USA",
+      "id": null,
+      "albums": "__00007__"
+    },
+    "__00006__": {
+      "name": "PlayList1",
+      "genresToInclude": "rock",
+      "maxDuration": "20:12",
+      "tracks": "__00008__",
+      "unqfy": "__00001__",
+      "strategy": "__00009__"
+    },
+    "__00007__": {
+      "0": "__00010__"
+    },
+    "__00008__": {},
+    "__00009__": {
+      "unqfy": "__00001__",
+      "genresToInclude": "rock",
+      "maxDuration": "20:12"
+    },
+    "__00010__": {
+      "name": "Crush",
+      "year": "2000",
+      "tracks": "__00011__",
+      "artist": "Bon Jovi",
+      "id": null
+    },
+    "__00011__": {
+      "0": "__00012__"
+    },
+    "__00012__": {
+      "name": "Its my life",
+      "duration": "5:34",
+      "genre": "rock",
+      "album": "__00010__",
+      "lyrics": null
+    }
+  },
+  "types": {
+    "__00001__": "UNQfy",
+    "__00002__": "Array",
+    "__00003__": "Array",
+    "__00004__": "Array",
+    "__00005__": "Artist",
+    "__00006__": "PlayList",
+    "__00007__": "Array",
+    "__00008__": "Array",
+    "__00009__": "RandomGeneratorPlaylist",
+    "__00010__": "Album",
+    "__00011__": "Array",
+    "__00012__": "Tracki"
+  }
+}

@@ -86,6 +86,12 @@ class ConsolePar{
       console.log('\nDatails for playlist %s',playlistName);
       console.log(this.unqfy.getPlaylistByName(playlistName));
     }
+
+    if (this.argvDict.populateAlbumsForArtist){
+      let artistName = this.argvDict.populateAlbumsForArtist;
+      console.log('\nPopulating albums for artist %s',artistName);
+      this.unqfy.populateAlbumsForArtist(artistName);
+    }
     
   }
 }

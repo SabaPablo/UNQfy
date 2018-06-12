@@ -6,11 +6,14 @@ const modTrack = require('./unqfy/track');
 const modPlayList = require('./unqfy/playlist');
 const modStrategys = require('./unqfy/playlist/strategys');
 const modConsoleParser = require('./unqfy/consoleParser');
+const duplicatedArtistError = require('./customErrors/unqfyModel/duplicatedArtistInModelError')
+const duplicatedAlbumError = require('./customErrors/unqfyModel/duplicatedAlbumInModelError')
+const spotifyRequest = require('./unqfy/spotifyAPI/spotifyRequests')
 
 class UNQfy {
 
   constructor(){
-    this.albums = [];
+
     this.artists = [];
     this.tracks = [];
     this.playlists = [];
@@ -33,7 +36,13 @@ class UNQfy {
   */
   addArtist(params) {
     // El objeto artista creado debe soportar (al menos) las propiedades name (string) y country (string)
-    this.artists.push(new modArtist.Artist(params.name,params.country));
+    if (this.getArtistByName(params.name)){
+      throw new duplicatedArtistError.DuplicatedArtistInModelError();
+    }
+    else{
+      this.artists.push(new modArtist.Artist(params.name,params.country,params.id));
+    }
+    
   }
 
 
@@ -43,7 +52,16 @@ class UNQfy {
   */
   addAlbum(artistName, params) {
     // El objeto album creado debe tener (al menos) las propiedades name (string) y year
-    this.albums.push(new modAlbum.Album(params.name,params.year,artistName));
+    
+    if (this.getAlbumByName(params.name)){
+      throw new duplicatedAlbumError.DuplicatedAlbumInModelError();
+    }
+    else{
+      let artist = this.getArtistByName(artistName);
+      artist.addAlbum(new modAlbum.Album(params.name,params.year,artistName,params.id));
+    }
+
+  
   }
 
 
@@ -61,7 +79,7 @@ class UNQfy {
     let albumOwner = this.getAlbumByName(albumName);
     let newTrack = new modTrack.Tracki(params.name,params.duration,params.genres,albumOwner);
     albumOwner.addTrack(newTrack);
-    this.tracks.push(newTrack);
+    //this.tracks.push(newTrack);
   }
 
   getArtistByName(name) {
@@ -69,7 +87,9 @@ class UNQfy {
   }
 
   getAlbumByName(name) {
-    return this.albums.find(album => album.isYourName(name));
+
+    let albums = [].concat.apply([],this.artists.map(function(art){return art.getAlbums()}));
+    return albums.find(alb => alb.isYourName(name));
   }
 
   getTrackByName(name) {
@@ -93,15 +113,46 @@ class UNQfy {
   }
 
   getArtistLikeName(pseudoName){
-    return this.artists.filter(artist => artist.name.includes(pseudoName));
+    return this.artists.filter(artist => artist.name.toLowerCase().includes(pseudoName));
   }
 
   getAlbumLikeName(pseudoName){
-    return this.albums.filter(album => album.name.includes(pseudoName));
+
+
+    let artistContainAlbum = this.artists.filter(artist => artist.haveAlbumLikeName(pseudoName));
+    let albums = [].concat.apply([],artistContainAlbum.map(function(art){return art.getAlbumsLikeName(pseudoName)}));
+    return albums;
+
   }
 
   getTrackLikeName(pseudoName){
     return this.tracks.filter(track => track.name.includes(pseudoName));
+  }
+
+  getArtistById(id){ return this.artists.find(art => art.isYourId(id)); }
+
+
+  getAllArtists(){ return this.artists; }
+
+
+  deleteArtist(artist){ this.artists = this.artists.filter(art => art !== artist); }
+  
+  getAlbumById(id){
+    let albums = [].concat.apply([],this.artists.map(function(art){return art.getAlbums()}));
+    return albums.find(alb => alb.isYourId(id));
+  }
+
+  getAllAlbums(){
+    return [].concat.apply([],this.artists.map(function(art){return art.getAlbums()}))
+  }
+
+  deleteAlbum(album){
+    let artistContainsAlbum = this.artists.filter(art => art.haveAlbumWithName(album.name));
+    artistContainsAlbum.forEach(artist => {artist.deleteAlbum(album); });
+  }
+
+  populateAlbumsForArtist(artistName){
+    spotifyRequest.populateAlbumsForArtist(artistName,this);
   }
 
   save(filename = 'unqfy.json') {
@@ -110,7 +161,6 @@ class UNQfy {
 
   static load(filename = 'unqfy.json') {
     const fs = new picklejs.FileSerializer();
-    // TODO: Agregar a la lista todas las clases que necesitan ser instanciadas
     const classes = [UNQfy,
       modAlbum.Album,
       modArtist.Artist,
@@ -120,13 +170,11 @@ class UNQfy {
       modConsoleParser.ConsolePar
     ];
 
-
     fs.registerClasses(...classes);
     return fs.load(filename);
   }
 }
 
-// TODO: exportar todas las clases que necesiten ser utilizadas desde un modulo cliente
 module.exports = {
   UNQfy,
 };

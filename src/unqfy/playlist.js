@@ -8,7 +8,7 @@ class PlayList{
     this.maxDuration = _maxDuration;
     this.tracks = [];
     this.unqfy = _unqfy;
-    this.strategy = this.strategy= new modStrategys.RandomGeneratorPlaylist(this.unqfy,this.genresToInclude,this.maxDuration);
+    this.strategy = new modStrategys.RandomGeneratorPlaylist(this.unqfy,this.genresToInclude,this.maxDuration);
   }
 
   duration(){
